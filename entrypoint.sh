@@ -51,6 +51,10 @@ main() {
     OPTS="${OPTS} -r"
   fi
 
+  pwd
+  ls -l
+  env
+
   # copy files
   sftp ${OPTS} -p -i sshkey -b batchjob ${INPUT_USERNAME}@${INPUT_HOST}
 }
