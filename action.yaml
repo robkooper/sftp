@@ -1,0 +1,31 @@
+name: Copy file(s) using SFTP
+description: Builds and pushes Docker images and will log in to a Docker registry if required
+author: robkooper
+branding:
+  icon: 'copy'
+  color: 'orange'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+inputs:
+  host:
+    description: Server address of sftp server
+    required: true
+  username:
+    description: Username used to log in to sftp server.
+    required: true
+  key:
+    description: SSH key used for login
+    required: true
+  files:
+    description: list of files
+    required: true
+    default: '*'
+  target:
+    description: Folder to upload files to, will be created if it does not exist
+    required: true
+    default: '/'
+  recursive:
+    description: do a recurive copy
+    required: true
+    default: true
