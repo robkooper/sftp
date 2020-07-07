@@ -22,6 +22,9 @@ main() {
     FOLDER=$(dirname ${FOLDER})
   done
 
+  pwd
+  ls -l 
+  
   # copy the files
   for x in ${INPUT_FILES}; do
     if [ -e "${x}" ]; then
