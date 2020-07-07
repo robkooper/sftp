@@ -3,7 +3,7 @@ on: [push]
 jobs:
   copy_job:
     runs-on: ubuntu-latest
-    name: A job to say hello
+    name: A simple test of sftp
     steps:
     - name: Test copy some files
       uses: robkooper/sftp-action@master
