@@ -24,7 +24,7 @@ main() {
 
   pwd
   ls -l 
-  
+
   # copy the files
   for x in ${INPUT_FILES}; do
     if [ -e "${x}" ]; then
@@ -33,7 +33,7 @@ main() {
   done
 
   # done
-  CMDS="bye\n"
+  CMDS="${CMDS}\nbye\n"
 
   # save script
   echo -e "${CMDS}" > batchjob
