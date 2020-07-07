@@ -40,8 +40,14 @@ main() {
   echo "${INPUT_KEY}" > sshkey
   chmod 600 sshkey
 
+  # check options
+  OPTS="-o StrictHostKeyChecking=no"
+  if usesBoolean "${INPUTS_RECURSIVE}"; then
+    OPTS="${OPTS} -r"
+  fi
+
   # copy files
-  sftp -r -p -i sshkey -b batchjob ${INPUT_USERNAME}@${INPUT_HOST}
+  sftp ${OPTS} -p -i sshkey -b batchjob ${INPUT_USERNAME}@${INPUT_HOST}
 }
 
 usesBoolean() {
