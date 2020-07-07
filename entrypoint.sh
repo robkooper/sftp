@@ -29,15 +29,17 @@ main() {
     fi
   done
 
+  # done
+  CMDS="bye\n"
+
+  # save script
+  echo -e "${CMDS}" > batchjob
   if usesBoolean "${ACTIONS_STEP_DEBUG}"; then
     echo "::add-output::${CMDS}"
   fi
 
-  # save script
-  echo -e "${CMDS}" > batchjob
-
   # save key
-  echo "${INPUT_KEY}" > sshkey
+  echo -e "${INPUT_KEY}" > sshkey
   chmod 600 sshkey
 
   # check options
