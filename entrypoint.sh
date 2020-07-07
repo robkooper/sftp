@@ -12,6 +12,10 @@ main() {
     echo "::add-output::${INPUT_RECURSIVE}"
   fi
 
+  pwd
+  ls -l 
+  env
+
   # make sure remote folder exists
   CMDS="-mkdir \"${INPUT_TARGET}\"\n"
   FOLDER=$(dirname $INPUT_TARGET)
@@ -21,9 +25,6 @@ main() {
     OLDFOLDER="${FOLDER}"
     FOLDER=$(dirname ${FOLDER})
   done
-
-  pwd
-  ls -l 
 
   # copy the files
   for x in ${INPUT_FILES}; do
@@ -50,10 +51,6 @@ main() {
   if usesBoolean "${INPUTS_RECURSIVE}"; then
     OPTS="${OPTS} -r"
   fi
-
-  pwd
-  ls -l
-  env
 
   # copy files
   sftp ${OPTS} -p -i sshkey -b batchjob ${INPUT_USERNAME}@${INPUT_HOST}
