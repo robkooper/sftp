@@ -8,9 +8,7 @@ jobs:
       - uses: actions/checkout@v2  
       - name: get branch name
         id: branch
-        run: |
-          env
-          echo "##[set-output name=branch;]${GITHUB_REF##*/}"
+        run: echo "::set-env name=GIBHUB_BRANCH::${GITHUB_REF##*/}"
       - name: Test copy some files
         uses: robkooper/sftp-action@master
         with:
@@ -18,5 +16,5 @@ jobs:
           username: ${{ secrets.SCP_USERNAME }}
           key: ${{ secrets.SCP_KEY }}
           files: Dockerfile file*
-          target: /CATS/${{ steps.branch.outputs.branch }}/sftp
+          target: /CATS/${GIBHUB_BRANCH}/sftp
           #recursive: false
