@@ -6,11 +6,11 @@ jobs:
     name: A simple test of sftp
     steps:
       - uses: actions/checkout@v2  
-      - name: get branch nameA
+      - name: get branch name
         id: branch
         run: |
           env
-          echo "##[set-output name=branch;]${${{ github.ref }}##/}"
+          echo "##[set-output name=branch;]${GITHUB_REF##*/}"
       - name: Test copy some files
         uses: robkooper/sftp-action@master
         with:
