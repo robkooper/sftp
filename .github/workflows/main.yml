@@ -6,15 +6,14 @@ jobs:
     name: A simple test of sftp
     steps:
       - uses: actions/checkout@v2  
-      - name: get branch name
-        id: branch
-        run: echo "::set-env name=GIBHUB_BRANCH::${GITHUB_REF##*/}"
+      - name: github branch
+        run: echo "::set-env name=GITHUB_BRANCH::${GITHUB_REF##*/}"
       - name: Test copy some files
         uses: robkooper/sftp-action@master
         with:
           host: ${{ secrets.SCP_HOST }}
           username: ${{ secrets.SCP_USERNAME }}
           key: ${{ secrets.SCP_KEY }}
-          files: Dockerfile file*
-          target: /CATS/${{ env.GIBHUB_BRANCH }}/sftp
+          files: Dockerfile file* folder
+          target: /CATS/sftp/${{ env.GITHUB_BRANCH }}
           #recursive: false

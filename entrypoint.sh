@@ -24,8 +24,10 @@ main() {
 
   # copy the files
   for x in ${INPUT_FILES}; do
-    if [ -e "${x}" ]; then
-      CMDS="${CMDS}\nput \"${x}\" \"${INPUT_TARGET}\"\n"
+  	if [ -d "${x}" ]; then
+      CMDS="${CMDS}\nput -pR \"${x}\" \"${INPUT_TARGET}\"\n"
+    elif [ -e "${x}" ]; then
+      CMDS="${CMDS}\nput -p \"${x}\" \"${INPUT_TARGET}\"\n"
     else
       echo "Could not find file ${x}"
       exit 1
@@ -47,13 +49,10 @@ main() {
 
   # check options
   OPTS="-o StrictHostKeyChecking=no"
-  if usesBoolean "${INPUTS_RECURSIVE}"; then
-    OPTS="${OPTS} -r"
-  fi
   if usesBoolean "${ACTIONS_STEP_DEBUG}"; then
   	OPTS="${OPTS} -v"
   fi
-  
+
   # copy files
   sftp ${OPTS} -p -i sshkey -b batchjob ${INPUT_USERNAME}@${INPUT_HOST}
 }
