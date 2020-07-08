@@ -12,10 +12,6 @@ main() {
     echo "::add-output::${INPUT_RECURSIVE}"
   fi
 
-  pwd
-  ls -l 
-  env
-
   # make sure remote folder exists
   CMDS="-mkdir \"${INPUT_TARGET}\"\n"
   FOLDER=$(dirname $INPUT_TARGET)
@@ -30,6 +26,9 @@ main() {
   for x in ${INPUT_FILES}; do
     if [ -e "${x}" ]; then
       CMDS="${CMDS}\nput \"${x}\" \"${INPUT_TARGET}\"\n"
+    else
+      echo "Could not find file ${x}"
+      exit 1
     fi
   done
 
