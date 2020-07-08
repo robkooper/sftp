@@ -5,12 +5,13 @@ jobs:
     runs-on: ubuntu-latest
     name: A simple test of sftp
     steps:
-    - name: Test copy some files
-      uses: robkooper/sftp-action@master
-      with:
-        host: ${{ secrets.SCP_HOST }}
-        username: ${{ secrets.SCP_USERNAME }}
-        key: ${{ secrets.SCP_KEY }}
-        files: Dockerfile
-        target: /CATS/test/sftp/sftp
-        #recursive: false
+      - uses: actions/checkout@v2    
+      - name: Test copy some files
+        uses: robkooper/sftp-action@master
+        with:
+          host: ${{ secrets.SCP_HOST }}
+          username: ${{ secrets.SCP_USERNAME }}
+          key: ${{ secrets.SCP_KEY }}
+          files: Dockerfile
+          target: /CATS/test/sftp/sftp
+          #recursive: false
