@@ -13,5 +13,5 @@ jobs:
           username: ${{ secrets.SCP_USERNAME }}
           key: ${{ secrets.SCP_KEY }}
           files: Dockerfile file*
-          target: /CATS/test/sftp/sftp
+          target: /CATS/${{ github.ref }}/sftp
           #recursive: false
