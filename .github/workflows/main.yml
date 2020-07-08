@@ -14,6 +14,5 @@ jobs:
           host: ${{ secrets.SCP_HOST }}
           username: ${{ secrets.SCP_USERNAME }}
           key: ${{ secrets.SCP_KEY }}
-          files: Dockerfile file* folder
+          #files: Dockerfile file* folder
           target: /CATS/sftp/${{ env.GITHUB_BRANCH }}
-          #recursive: false
