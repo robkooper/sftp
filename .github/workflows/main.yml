@@ -12,6 +12,6 @@ jobs:
           host: ${{ secrets.SCP_HOST }}
           username: ${{ secrets.SCP_USERNAME }}
           key: ${{ secrets.SCP_KEY }}
-          files: Dockerfile nothere
+          files: Dockerfile .
           target: /CATS/test/sftp/sftp
           #recursive: false
