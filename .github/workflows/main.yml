@@ -12,9 +12,6 @@ jobs:
           host: ${{ secrets.SCP_HOST }}
           username: ${{ secrets.SCP_USERNAME }}
           key: ${{ secrets.SCP_KEY }}
-          files:
-            - Dockerfile
-            - '*'
-            - 'file with space'
+          files: Dockerfile '*' 'file with space'
           target: /CATS/test/sftp/sftp
           #recursive: false
