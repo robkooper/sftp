@@ -10,7 +10,7 @@ jobs:
         id: branch
         run: |
           env
-          echo "##[set-output name=branch;]${${{ github.ref }}##/"
+          echo "##[set-output name=branch;]${${{ github.ref }}##/}"
       - name: Test copy some files
         uses: robkooper/sftp-action@master
         with:
