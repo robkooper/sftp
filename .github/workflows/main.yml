@@ -5,7 +5,12 @@ jobs:
     runs-on: ubuntu-latest
     name: A simple test of sftp
     steps:
-      - uses: actions/checkout@v2    
+      - uses: actions/checkout@v2  
+      - name: get branch nameA
+        id: branch
+        run: |
+          env
+          echo "##[set-output name=branch;]${${{ github.ref }}##/"
       - name: Test copy some files
         uses: robkooper/sftp-action@master
         with:
@@ -13,5 +18,5 @@ jobs:
           username: ${{ secrets.SCP_USERNAME }}
           key: ${{ secrets.SCP_KEY }}
           files: Dockerfile file*
-          target: /CATS/${{ github.ref }}/sftp
+          target: /CATS/${{ steps.branch.outputs.branch }}/sftp
           #recursive: false
