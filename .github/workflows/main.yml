@@ -16,5 +16,5 @@ jobs:
           username: ${{ secrets.SCP_USERNAME }}
           key: ${{ secrets.SCP_KEY }}
           files: Dockerfile file*
-          target: /CATS/${GIBHUB_BRANCH}/sftp
+          target: /CATS/${{ env.GIBHUB_BRANCH }}/sftp
           #recursive: false
