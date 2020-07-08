@@ -50,7 +50,10 @@ main() {
   if usesBoolean "${INPUTS_RECURSIVE}"; then
     OPTS="${OPTS} -r"
   fi
-
+  if usesBoolean "${ACTIONS_STEP_DEBUG}"; then
+  	OPTS="${OPTS} -v"
+  fi
+  
   # copy files
   sftp ${OPTS} -p -i sshkey -b batchjob ${INPUT_USERNAME}@${INPUT_HOST}
 }
