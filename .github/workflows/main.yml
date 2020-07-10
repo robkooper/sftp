@@ -9,6 +9,7 @@ jobs:
       - name: github branch
         run: |
           git status
+          git rev-parse --abbrev-ref HEAD
           echo "::set-env name=GITHUB_BRANCH::${GITHUB_REF##*/}"
       - name: Test copy some files
         uses: robkooper/sftp-action@master
