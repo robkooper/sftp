@@ -7,7 +7,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2  
       - name: github branch
-        run: echo "::set-env name=GITHUB_BRANCH::${GITHUB_REF##*/}"
+        run: |
+          git status
+          echo "::set-env name=GITHUB_BRANCH::${GITHUB_REF##*/}"
       - name: Test copy some files
         uses: robkooper/sftp-action@master
         with:
